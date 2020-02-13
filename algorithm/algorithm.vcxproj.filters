@@ -21,5 +21,8 @@
     <ClCompile Include="11053가장긴증가하는부분수열.cpp">
       <Filter>소스 파일\boj</Filter>
     </ClCompile>
+    <ClCompile Include="5585거스름돈.cpp">
+      <Filter>소스 파일\boj</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
