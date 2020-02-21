@@ -27,5 +27,14 @@
     <ClCompile Include="1138한줄로서기.cpp">
       <Filter>소스 파일\boj</Filter>
     </ClCompile>
+    <ClCompile Include="1389케빈베이컨의6단계법칙.cpp">
+      <Filter>소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="7562나이트의이동.cpp">
+      <Filter>소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="1743음식물피하기.cpp">
+      <Filter>소스 파일\boj</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
