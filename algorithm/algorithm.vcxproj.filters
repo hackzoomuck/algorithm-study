@@ -13,28 +13,70 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\boj">
+    <Filter Include="리소스 파일\boj">
       <UniqueIdentifier>{7c9858f6-69ff-4554-b4f2-f12769dd58a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="11053가장긴증가하는부분수열.cpp">
-      <Filter>소스 파일\boj</Filter>
+      <Filter>리소스 파일\boj</Filter>
     </ClCompile>
     <ClCompile Include="5585거스름돈.cpp">
-      <Filter>소스 파일\boj</Filter>
+      <Filter>리소스 파일\boj</Filter>
     </ClCompile>
     <ClCompile Include="1138한줄로서기.cpp">
-      <Filter>소스 파일\boj</Filter>
+      <Filter>리소스 파일\boj</Filter>
     </ClCompile>
     <ClCompile Include="1389케빈베이컨의6단계법칙.cpp">
-      <Filter>소스 파일\boj</Filter>
+      <Filter>리소스 파일\boj</Filter>
     </ClCompile>
     <ClCompile Include="7562나이트의이동.cpp">
-      <Filter>소스 파일\boj</Filter>
+      <Filter>리소스 파일\boj</Filter>
     </ClCompile>
     <ClCompile Include="1743음식물피하기.cpp">
-      <Filter>소스 파일\boj</Filter>
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="1463 1로만들기.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="1149 rgb거리.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="14728  벼락치기.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="1535 안녕.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="9095 1,2,3 더하기.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="2579 계단 오르기.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="10844 쉬운계단수.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="1912연속합.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="2293 동전1.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="2294 동전2.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="11047 동전0.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="4796 캠핑.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="1744 수묶기.cpp">
+      <Filter>리소스 파일\boj</Filter>
+    </ClCompile>
+    <ClCompile Include="1946 신입사원.cpp">
+      <Filter>리소스 파일\boj</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
