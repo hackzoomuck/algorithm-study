@@ -9,30 +9,7 @@ string solution(vector<string> participant, vector<string> completion) {
 	sort(participant.begin(), participant.end());
 	sort(completion.begin(), completion.end());
 	for (int i = 0; i < participant.size(); i++) {
-		if (!completion.size()) {
-			answer = participant[i];
-			return answer;
-		}
-		bool check = false;
-		int left = 0;
-		int right = completion.size() - 1;
-		while (left <= right) {
-			int mid = (left + right) / 2;
-			if (participant[i] == completion[mid]) {
-				completion.erase(completion.begin() + mid);
-				check = true;
-				break;
-			}
-			else {
-				if (participant[i][0] < completion[mid][0]) {
-					right = mid - 1;
-				}
-				else {
-					left = mid + 1;
-				}
-			}
-		}
-		if (!check) {
+		if (participant[i] != completion[i]) {
 			answer = participant[i];
 			return answer;
 		}
