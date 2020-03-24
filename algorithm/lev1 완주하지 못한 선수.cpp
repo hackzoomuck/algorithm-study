@@ -1,4 +1,5 @@
-#include <algorithm>
+#include <unordered_map>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -6,12 +7,16 @@ using namespace std;
 
 string solution(vector<string> participant, vector<string> completion) {
 	string answer = "";
-	sort(participant.begin(), participant.end());
-	sort(completion.begin(), completion.end());
+	unordered_map<string, int> m;
 	for (int i = 0; i < participant.size(); i++) {
-		if (participant[i] != completion[i]) {
-			answer = participant[i];
-			return answer;
+		m[participant[i]]++;
+	}
+	for (int j = 0; j < completion.size(); j++) {
+		m[completion[j]]++;
+	}
+	for (auto it = m.begin(); it != m.end(); ++it) {
+		if ((it->second) % 2 != 0) {
+			return it->first;
 		}
 	}
 }
