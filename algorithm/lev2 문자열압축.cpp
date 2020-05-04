@@ -11,7 +11,7 @@ int solution(string s) {
     //i크기로 압축된 문자열을 저장하기 위함.
     v.resize(s.size(), "");
 
-    //i크기로 압축, s.size()가 아닌 s.size()/2만큼까지 실행해도 됨.
+    //i크기로 압축, s.size()가 아닌 s.size()/2만큼까지 실행해도 된다고 하는데 오류난다.
     for (int i = 1; i <= s.size(); i++) {
         string tmp = s;
         //tmp가 0이 될때까지 for문 실행함.
