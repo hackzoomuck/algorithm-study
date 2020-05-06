@@ -1,3 +1,4 @@
+//2차원 배열을 원하는 형태로 변경해서 사용하기
 #include <string>
 #include <stack>
 #include <vector>
