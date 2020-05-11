@@ -1,18 +1,24 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <queue>
 
 using namespace std;
 
 int solution(vector<int> scoville, int K) {
     int answer = 0;
-    while (!scoville.empty()) {
-        sort(scoville.begin(), scoville.end());
-        if (scoville[0] < K) {
-            if (scoville.size() >= 2) {
-                int newscoville = scoville[0] + (scoville[1] * 2);
-                scoville.erase(scoville.begin(), scoville.begin() + 2);
-                scoville.push_back(newscoville);
+    priority_queue<int, vector<int>, greater<int>> pq;
+    for (int i = 0; i < scoville.size(); i++) {
+        pq.push(scoville[i]);
+    }
+    while (!pq.empty()) {
+        if (pq.top() < K) {
+            if (pq.size() >= 2) {
+                int pTop = pq.top();
+                pq.pop();
+                int newscoville = pTop + (pq.top() * 2);
+                pq.pop();
+                pq.push(newscoville);
                 ++answer;
             }
             else {
