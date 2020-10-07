@@ -43,20 +43,17 @@ int main() {
 		}
 	}
 
-	//톱니의 회전 방향
-	int dir[5] = { 0, };
 	cin >> k;
 	for (int l = 0; l < k; l++) {
+		//톱니의 회전 방향
+		int dir[5] = { 0, };
 		cin >> num >> ro;
 		dir[num] = ro;
-		rota(bit[num], dir[num]);
 
 		//톱니의 왼쪽으로 움직
 		for (int a = num - 1; a > 0; a--) {
 			if (right(bit[a]) ^ left(bit[a + 1])) {
 				dir[a] = -dir[a + 1];
-				rota(bit[a], dir[a]);
-				cout << a << "번" << "\n";
 			}
 			else {
 				break;
@@ -66,15 +63,13 @@ int main() {
 		for (int b = num + 1; b < 5; b++) {
 			if (right(bit[b - 1]) ^ left(bit[b])) {
 				dir[b] = -dir[b - 1];
-				rota(bit[b], dir[b]);
-				cout << b << "번" << "\n";
 			}
 			else {
 				break;
 			}
 		}
 		 for(int c=1;c<5;c++){
-		     cout<<"\n"<<c<<" "<<bit[c]<<"\n";
+			 rota(bit[c], dir[c]);
 		 }
 	}
 	int answer = (bit[1] & 1) * 1 + (bit[2] & 1) * 2 + (bit[3] & 1) * 4 + (bit[4] & 1) * 8;
