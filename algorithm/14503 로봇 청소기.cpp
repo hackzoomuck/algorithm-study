@@ -2,67 +2,66 @@
 using namespace std;
 
 int n, m;
-int romap[51][51]; //0-Ã»¼ÒÇÊ¿ä 1-º® 2-Ã»¼ÒµÊ
-int answer = 0; //Ã»¼ÒÇÑ ±¸¿ª
+int romap[51][51]; //0-ì²­ì†Œí•„ìš” 1-ë²½ 2-ì²­ì†Œë¨
+int answer = 0; //ì²­ì†Œí•œ êµ¬ì—­
 
 
-// 0:ºÏ 1:µ¿ 2:³² 3:¼­
-int bx[4] = { 1,0,-1,0 };
+// 0:ë¶ 1:ë™ 2:ë‚¨ 3:ì„œ <= ê·¸ë•Œ ì •ì‹ ì´ ë‚˜ê°”ì—ˆë‚˜ë³´ë‹¤.
+int bx[4] = { -1,0,1,0 };
 int by[4] = { 0,1,0,-1 };
 
-
-// 0:¼­ 1:³² 2:µ¿ 3:ºÏ : left
-int dx[4] = { 0,-1,0,1 };
-int dy[4] = { -1,0,1,0 };
-
-// rear ³² ¼­ ºÏ µ¿
-int rx[4] = { -1,0,1,0 };
+// rear ë‚¨ ì„œ ë¶ ë™
+int rx[4] = { 1,0,-1,0 };
 int ry[4] = { 0,-1,0,1 };
 
-int d[4] = { 3,2,1,0 };
+int d[4] = { 3,0,1,2 };
 
 struct {
 	int r, c, dir;
-	int dcnt = 0; //È¸Àü ¼ö 
 }robo;
 
 void dfs() {
+    while(1){
 	if (romap[robo.r][robo.c] == 0) {
 		romap[robo.r][robo.c] = 2;
 		answer++;
 	}
-	robo.dcnt = 0;
+	bool check = false;
 	for (int i = 0; i < 4; i++) {
-		//¿ŞÂÊ ¹æÇâ
-		int nx = robo.r + dx[robo.dir];
-		int ny = robo.c + dy[robo.dir];
+		//ì™¼ìª½ ë°©í–¥
+		int nx = robo.r + bx[d[robo.dir]];
+		int ny = robo.c + by[d[robo.dir]];
+		
+		if(nx<=0||ny<=0||nx>=n-1||ny>=m-1){
+                	robo.dir = d[robo.dir];
+                	continue;
+            	}
 
-		//¿ŞÂÊ ¹æÇâ¿¡ Ã»¼ÒÇÒ °÷ ÀÖÀ¸¸é
+		//ì™¼ìª½ ë°©í–¥ì— ì²­ì†Œí•  ê³³ ìˆìœ¼ë©´
 		if (romap[nx][ny] == 0) {
-			//¹æÇâ ¹Ù²Ù±â
+			//ë°©í–¥ ë°”ê¾¸ê¸°
 			robo.dir = d[robo.dir];
-			//ÇÑ Ä­ ÀÌµ¿
+			//í•œ ì¹¸ ì´ë™
 			robo.r = nx;
 			robo.c = ny;
-			dfs();
-			return;
+			check = true;
+                	break;
 		}
-		else { //¿ŞÂÊ ¹æÇâ¿¡ Ã»¼ÒÇÒ °÷ ¾øÀ¸¸é
-			//¹æÇâ ¹Ù²Ù±â
+		else { //ì™¼ìª½ ë°©í–¥ì— ì²­ì†Œí•  ê³³ ì—†ìœ¼ë©´
+			//ë°©í–¥ ë°”ê¾¸ê¸°
 			robo.dir = d[robo.dir];
-			robo.dcnt++;
 		}
 	}
-	if (robo.dcnt == 4) {
+	if (!check) {
 		int nx = robo.r + rx[robo.dir];
 		int ny = robo.c + ry[robo.dir];
 		if (romap[nx][ny] == 1) return;
 		else {
 			robo.r = nx;
 			robo.c = ny;
-			dfs();
 		}
 	}
+    }
 }
 
 int main() {
