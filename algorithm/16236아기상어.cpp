@@ -3,7 +3,6 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include <queue>
 #include <math.h>
 using namespace std;
@@ -20,30 +19,7 @@ struct {
 }fish[7];
 
 void fishing() {
-	vector<pair<pair<int, int>,int>> top_left_fish;
-	int min_v = 987654321;
-	map[sh_x][sh_y] = 0;
 	while (1) {
-		if (!top_left_fish.empty()) {
-			sort(top_left_fish.begin(), top_left_fish.end());
-			sh_eat_cnt++;
-			sh_time += min_v;
-			int fi_s = top_left_fish[0].second;
-			int fx = top_left_fish[0].first.first;
-			int fy = top_left_fish[0].first.second;
-			for (int j = 0; j < fish[fi_s].fish_size; j++) {
-				if (fish[fi_s].v[j].first == fx && fish[fi_s].v[j].second == fy) { //해당 x,y 위치의 fish를 없애준다.
-					map[fx][fy] = 0;
-					sh_x = fx;
-					sh_y = fy;
-					fish[fi_s].v.erase(fish[fi_s].v.begin() + j);
-					fish[fi_s].fish_size--;
-					break;
-				}
-			}
-			top_left_fish.clear();
-			min_v = 987654321;
-		}
 		int visit[21][21] = { 0, };
 		int can_eat_fish = 0;
 		if (sh_eat_cnt == sh_size) { //먹은 수가 물고기 크기일 때, 
@@ -86,32 +62,38 @@ void fishing() {
 				int nx = x + dx[i];
 				int ny = y + dy[i];
 				if (0 <= nx && nx < n && 0 <= ny && ny < n && !visit[nx][ny] && map[nx][ny] <= sh_size) {
-					visit[nx][ny] = visit[x][y] + 1;
-					if (visit[nx][ny] > min_v) break;
-					q.push({ nx,ny });
 					if (map[nx][ny] < sh_size && map[nx][ny] > 0) {
-						if (min_v >= visit[nx][ny]) {
-							min_v = visit[nx][ny];
-							
-							top_left_fish.push_back({{nx,ny},map[nx][ny]});
+						sh_eat_cnt++;
+						sh_time += visit[x][y] + 1;
+						for (int j = 0; j < fish[map[nx][ny]].fish_size; j++) {
+							if (fish[map[nx][ny]].v[j].first == nx && fish[map[nx][ny]].v[j].second == ny) { //해당 x,y 위치의 fish를 없애준다.
+								fish[map[nx][ny]].v.erase(fish[map[nx][ny]].v.begin() + j);
+								fish[map[nx][ny]].fish_size--;
+								break;
+							}
 						}
+						map[nx][ny] = 0;
+						sh_x = nx;
+						sh_y = ny;
+						while (!q.empty())q.pop();
+						break;
 					}
+					visit[nx][ny] = visit[x][y]+1;
+					q.push({ nx,ny });
 				}
 			}//for 4방향 끝
+			if (!visit[x][y])visit[x][y] = 10000;
 		}// bfs while 끝
 
 	}
 }
 
 int main() {
-	//std::ifstream fin("C:\\a.txt");
-	//fin>>n;
-	cin >> n;
+	std::ifstream fin("C:\\a.txt");
+	fin>>n;
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			//fin>>map[i][j];
-			cin >> map[i][j];
-
+			fin>>map[i][j];
 			if (map[i][j] == 9) {
 				sh_x = i; sh_y = j;
 				continue;
