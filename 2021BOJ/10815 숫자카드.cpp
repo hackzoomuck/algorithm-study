@@ -1,24 +1,22 @@
 #include <iostream>
-#include <unordered_map>
+#include <algorithm>
+#include<vector>
 using namespace std;
-
+int n,m,arr1[500001],y;
 int main() {
-	int n, m, x;
-	unordered_map<int, int> ma;
-	cin >> n;
+
+	vector<int> vt;
+	scanf("%d", &n);
 	for (int i = 0; i < n; i++) {
-		cin >> x;
-		ma[x]++;
+		scanf("%d", &arr1[i]);
+		vt.push_back(arr1[i]);
 	}
-	cin >> m;
-	for (int j = 0; j < m; j++) {
-		cin >> x;
-		if (ma[x]) {
-			cout << "1 ";
-		}
-		else {
-			cout << "0 ";
-		}
+	sort(vt.begin(), vt.end());
+	scanf("%d", &m);
+	for (int i = 0; i < m; i++) {
+		scanf("%d", &y);
+		printf("%d ", binary_search(vt.begin(), vt.end(), y));
+
 	}
-	return 0;
+
 }
