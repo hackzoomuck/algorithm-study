@@ -1,5 +1,8 @@
+package Easy;
+import java.util.ArrayList;
+
 // 1
-class Solution {
+class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         ArrayList<Integer> result = new ArrayList<>();
         for(int i=0;i<nums.length;i++){

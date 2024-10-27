@@ -1,5 +1,9 @@
-// 3 
-class Solution {
+package Med;
+
+import java.util.HashSet;
+
+//  3 
+class LongestSubstringWithoutRepeatingCharacters {
     public int lengthOfLongestSubstring(String s) {
         HashSet<Character> charSet = new HashSet();
         int result = 0;
