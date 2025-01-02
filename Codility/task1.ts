@@ -1,7 +1,7 @@
 function solution(N: number): number {
-  const gap = N.toString(2)
+  const gaps = N.toString(2)
     .split("1")
-    .filter((el) => el !== "");
+    .filter((el, idx, arr) => idx > 0 && idx < arr.length - 1);
 
   // 1. 기존 코드 (forEach)
   //   let maxGap = 0;
@@ -14,7 +14,5 @@ function solution(N: number): number {
   //   }
 
   // 2. 수정 코드 (reduce) : 누적값 계산, 상태 공유 안함
-  return gap.length > 1
-    ? gap.reduce((acc, el) => Math.max(acc, el.length), 0)
-    : 0;
+  return gaps.reduce((acc, el) => Math.max(acc, el.length), 0);
 }
