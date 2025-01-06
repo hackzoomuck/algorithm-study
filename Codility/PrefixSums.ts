@@ -56,3 +56,27 @@ function GenomicRangeQuery(S: string, P: number[], Q: number[]): number[] {
 
   return result;
 }
+
+// 평균을 내는 값이 적을 수록 더 큰 영향을 주기에 2, 3개로 제한하여 시작 인덱스를 구함. 시간복잡도 O(n)
+// 모든 값을 비교할 시에는 시간복잡도 O(n^2) 
+function MinAvgTwoSlice(A: number[]): number {
+  const n = A.length;
+  let minIdx = 0;
+  let minAverage = Infinity;
+
+  for (let i = 0; i < n - 1; i++) {
+    if ((A[i] + A[i + 1]) / 2 < minAverage) {
+      minAverage = (A[i] + A[i + 1]) / 2;
+      minIdx = i;
+    }
+
+    if (i < n - 2) {
+      if ((A[i] + A[i + 1] + A[i + 2]) / 3 < minAverage) {
+        minAverage = (A[i] + A[i + 1] + A[i + 2]) / 3;
+        minIdx = i;
+      }
+    }
+  }
+
+  return minIdx;
+}
