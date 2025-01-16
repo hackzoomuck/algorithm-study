@@ -12,13 +12,13 @@ function passingCars(A: number[]): number {
   return result > 1000000000 ? -1 : result;
 }
 
-function CountDiv(A: number, B: number, K: number): number {
+function countDiv(A: number, B: number, K: number): number {
   const startDiv = Math.ceil(A / K);
   const lastDiv = Math.floor(B / K);
   return lastDiv - startDiv + 1;
 }
 
-function GenomicRangeQuery(S: string, P: number[], Q: number[]): number[] {
+function genomicRangeQuery(S: string, P: number[], Q: number[]): number[] {
   // A, C, G, T : 1, 2, 3, 4
   const dna = {
     A: new Array(S.length + 1).fill(0),
@@ -59,7 +59,7 @@ function GenomicRangeQuery(S: string, P: number[], Q: number[]): number[] {
 
 // 평균을 내는 값이 적을 수록 더 큰 영향을 주기에 2, 3개로 제한하여 시작 인덱스를 구함. 시간복잡도 O(n)
 // 모든 값을 비교할 시에는 시간복잡도 O(n^2) 
-function MinAvgTwoSlice(A: number[]): number {
+function minAvgTwoSlice(A: number[]): number {
   const n = A.length;
   let minIdx = 0;
   let minAverage = Infinity;
